@@ -1,0 +1,38 @@
+# This file contains metadata for your plugin.
+
+[general]
+name=ImportFauna
+qgisMinimumVersion=3.16
+description=Import des exports CSV du portail Fauna (SINP) en couches QGIS.
+version=0.1
+author=F. YVONNE / CEN Nouvelle-Aquitaine
+email=f.yvonne@cen-na.org
+
+about=Importe les fichiers CSV tabulés exportés depuis le portail Fauna (observatoire-fauna.fr) vers QGIS.
+
+    Fonctionnalités :
+    - Détection automatique des fichiers CSV Fauna dans un dossier (points, linéaires, polygones) par analyse du contenu, quel que soit le nom des fichiers
+    - Prise en charge de plusieurs fichiers par type de géométrie (ex. point_site1.csv, point_site2.csv)
+    - Affichage de la liste des fichiers détectés avec type de géométrie et nombre d'entités, sélection individuelle avant import
+    - Jointure optionnelle des métadonnées (Metadonnees.csv) directement dans la table attributaire des couches (clé IdJdd ↔ IdJeuDonnees) ; plusieurs fichiers de métadonnées fusionnés automatiquement avec déduplication
+    - Export optionnel en GeoPackage (.gpkg) : dans ce cas les couches sont chargées depuis le fichier plutôt que comme couches temporaires
+    - Toutes les couches sont regroupées dans un groupe nommé d'après le dossier source et le zoom est automatiquement ajusté
+    - Projection Lambert 93 (EPSG:2154)
+
+tracker=https://github.com/frdyvn/import_fauna/issues
+repository=https://github.com/frdyvn/import_fauna
+
+hasProcessingProvider=no
+changelog=
+    0.1 - Version initiale :
+          détection automatique par contenu, liste avec cases à cocher,
+          jointure métadonnées dénormalisée, export GeoPackage
+
+tags=fauna, sinp, observations, naturaliste, import, csv, geopackage, biodiversité
+
+homepage=https://cen-na.org
+category=Plugins
+icon=icon.png
+experimental=False
+deprecated=False
+server=False

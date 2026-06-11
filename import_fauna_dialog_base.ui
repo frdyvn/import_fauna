@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ImportFaunaDialogBase</class>
+ <widget class="QDialog" name="ImportFaunaDialogBase">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>640</width><height>520</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>Chargement de données Fauna (SINP)</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" spacing="8">
+
+   <!-- Titre + icône -->
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QLabel" name="labelTitle">
+       <property name="text">
+        <string>&lt;div style="text-align:center"&gt;&lt;b style="font-size:13px"&gt;Chargement de données Fauna (SINP)&lt;/b&gt;&lt;br&gt;&lt;span style="color:#555; font-size:11px"&gt;à partir des exports réalisés via &lt;a href="https://observatoire-fauna.fr"&gt;observatoire-fauna.fr&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;</string>
+       </property>
+       <property name="alignment"><set>Qt::AlignHCenter</set></property>
+       <property name="openExternalLinks"><bool>true</bool></property>
+       <property name="textFormat"><enum>Qt::RichText</enum></property>
+      </widget>
+     </item>
+     <item>
+      <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelIcon">
+       <property name="text"><string></string></property>
+       <property name="pixmap"><pixmap>icon.png</pixmap></property>
+       <property name="scaledContents"><bool>true</bool></property>
+       <property name="minimumSize">
+        <size><width>32</width><height>32</height></size>
+       </property>
+       <property name="maximumSize">
+        <size><width>32</width><height>32</height></size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- Sélection du dossier -->
+   <item>
+    <widget class="QGroupBox" name="groupBoxDossier">
+     <property name="title"><string>Dossier source</string></property>
+     <layout class="QHBoxLayout" name="hLayoutDossier">
+      <item>
+       <widget class="QLineEdit" name="lineEditDossier">
+        <property name="placeholderText">
+         <string>Chemin vers le dossier contenant les fichiers CSV Fauna…</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnParcourir">
+        <property name="text"><string>Parcourir…</string></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnScanner">
+        <property name="text"><string>Scanner</string></property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- Tableau des fichiers détectés -->
+   <item>
+    <widget class="QGroupBox" name="groupBoxFichiers">
+     <property name="title"><string>Fichiers détectés — cochez ceux à importer</string></property>
+     <layout class="QVBoxLayout" name="vLayoutFichiers">
+
+      <!-- Barre sélection tout / rien -->
+      <item>
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QPushButton" name="btnTout">
+          <property name="text"><string>Tout cocher</string></property>
+          <property name="maximumWidth"><number>110</number></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnRien">
+          <property name="text"><string>Tout décocher</string></property>
+          <property name="maximumWidth"><number>110</number></property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+
+      <!-- Tableau -->
+      <item>
+       <widget class="QTableWidget" name="tableFiles">
+        <property name="alternatingRowColors"><bool>true</bool></property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="columnCount"><number>4</number></property>
+        <attribute name="horizontalHeaderVisible"><bool>true</bool></attribute>
+        <attribute name="verticalHeaderVisible"><bool>false</bool></attribute>
+        <column><property name="text"><string>Import</string></property></column>
+        <column><property name="text"><string>Fichier</string></property></column>
+        <column><property name="text"><string>Type géométrie</string></property></column>
+        <column><property name="text"><string>Nb entités</string></property></column>
+       </widget>
+      </item>
+
+     </layout>
+    </widget>
+   </item>
+
+   <!-- Options -->
+   <item>
+    <widget class="QGroupBox" name="groupBoxOptions">
+     <property name="title"><string>Options</string></property>
+     <layout class="QVBoxLayout" name="vLayoutOptions">
+
+      <!-- Métadonnées -->
+      <item>
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QCheckBox" name="chkJointureMeta">
+          <property name="text"><string>Joindre les métadonnées</string></property>
+          <property name="checked"><bool>true</bool></property>
+          <property name="enabled"><bool>false</bool></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelMeta">
+          <property name="text"><string><i>Métadonnées : non détectées</i></string></property>
+         </widget>
+        </item>
+        <item>
+         <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer>
+        </item>
+       </layout>
+      </item>
+
+      <!-- Export GeoPackage -->
+      <item>
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QCheckBox" name="chkExportGpkg">
+          <property name="text"><string>Exporter en GeoPackage</string></property>
+          <property name="checked"><bool>false</bool></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditGpkg">
+          <property name="placeholderText"><string>Chemin du fichier .gpkg à créer…</string></property>
+          <property name="enabled"><bool>false</bool></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnGpkg">
+          <property name="text"><string>…</string></property>
+          <property name="maximumWidth"><number>30</number></property>
+          <property name="enabled"><bool>false</bool></property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+
+     </layout>
+    </widget>
+   </item>
+
+   <!-- Barre de progression -->
+   <item>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="value"><number>0</number></property>
+     <property name="visible"><bool>false</bool></property>
+    </widget>
+   </item>
+
+   <!-- Statut -->
+   <item>
+    <widget class="QLabel" name="labelStatut">
+     <property name="text"><string></string></property>
+    </widget>
+   </item>
+
+   <!-- Boutons -->
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <spacer><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnImporter">
+       <property name="text"><string>Charger les données sélectionnées</string></property>
+       <property name="enabled"><bool>false</bool></property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnFermer">
+       <property name="text"><string>Fermer</string></property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
