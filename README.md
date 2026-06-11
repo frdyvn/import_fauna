@@ -4,6 +4,8 @@ Plugin QGIS pour importer les fichiers CSV exportés depuis le portail [observat
 
 ---
 
+![Aperçu du plugin](snap_import_fauna.jpg)
+
 ## Fonctionnalités
 
 - **Détection automatique** des fichiers CSV Fauna dans un dossier, par analyse du contenu (indépendamment du nom des fichiers)
